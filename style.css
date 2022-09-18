@@ -1,0 +1,204 @@
+@import "node_modules/ol/ol.css";
+@import "node_modules/normalize-css/normalize.css";
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Josefin+Sans&display=swap');
+
+:root {
+  --layer-1993-color: rgb(255, 85, 50);
+  --layer-2000-color: rgb(205, 30, 45);
+  --layer-2010-color: rgb(115, 20, 50);
+  --layer-misc-color: rgb(100, 100, 100);
+	--border-gap: 12px;
+	--tile-gap: 4px;
+	--button-height: 36px;
+	--header-height: 120px;
+
+	font-family: "Josephin Sans", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+html, body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  color: #dedede;
+}
+
+h1, h2, h3 {
+  font-family: "Josefin Slab", system-ui, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+hr {
+  border: 0; 
+  border-bottom: 1px solid #374140; 
+  background: #1E1E20;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#panel {
+  position: fixed;
+  background-color: #1E1E20;
+  border: 3px solid #374140;
+  width: 340px;
+  height: max-content;
+  right: 16px;
+  top: 16px;
+  padding: 0px 16px;
+}
+
+.layers {
+  width: 100%;
+  display: grid;
+  column-gap: 16px;
+  row-gap: 16px;
+}
+
+.layers > div {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  border-width: 1px;
+  border-style: solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0.5;
+}
+
+.layers h3,
+.layers p {
+  user-select: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+#layers-1 {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 40px);
+}
+
+#layers-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.layer {
+  transition: background-color 0.2s ease-in-out;
+}
+
+[data-layer="layer_1993"] {
+  border-color: var(--layer-1993-color);
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+[data-layer="layer_2000"] {
+  border-color: var(--layer-2000-color);
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+[data-layer="layer_2010"] {
+  border-color: var(--layer-2010-color);
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+[data-layer="layer_ethnic"],
+[data-layer="layer_house"],
+[data-layer="layer_diff"] {
+  border-color: var(--layer-misc-color);
+}
+
+[data-layer="layer_diff"] {
+  grid-column: 1 / 4;
+  grid-row: 2 / 3;
+}
+
+[data-layer="layer_1993"].active {
+  background-color: var(--layer-1993-color);
+}
+
+[data-layer="layer_2000"].active {
+  background-color: var(--layer-2000-color);
+}
+
+[data-layer="layer_2010"].active {
+  background-color: var(--layer-2010-color);
+}
+
+[data-layer="layer_ethnic"].active,
+[data-layer="layer_house"].active,
+[data-layer="layer_diff"].active {
+  background-color: var(--layer-misc-color);
+}
+
+.active #white {
+  color: rgb(255,25,125);
+}
+
+.active #black {
+  color: rgb(0,150,200);
+}
+
+.active #latino {
+  color: rgb(255,125,0);
+}
+
+.active #asian {
+  color: rgb(0,225,0);
+}
+
+.active #other {
+  color: rgb(255,255,255);
+}
+
+.active #owner {
+  color: rgb(31,138,112);
+}
+
+.active #renter {
+  color: rgb(190,219,57);
+}
+
+
+.layers p span {
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.ol-zoom {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  background-color: transparent;
+}
+
+.ol-zoom-in,
+.ol-zoom-out {
+  height: 36px !important;
+  width: 36px !important;
+  border-radius: 0px !important;
+  color: white !important;
+  background-color: #1E1E20 !important;
+  box-shadow: 0 0 0 3px #374140 inset;
+  transition: background-color 0.15s ease-in-out;
+}
+
+.ol-control button:hover,
+.ol-control button:focus {
+  background-color: #272730 !important;
+  outline: none;
+}

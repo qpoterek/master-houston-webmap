@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Urban expansion in Houston (TX)</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="panel">
+      <h1>Urban Sprawl in Houston (1993 - 2010)</h1>
+      <hr>
+      <div>
+        <h2>Urban extent</h2>
+        <div id="layers-1" class="layers">
+          <div data-layer="layer_1993" class="layer"><p>1993</p></div>
+          <div data-layer="layer_2000" class="layer"><p>2000</p></div>
+          <div data-layer="layer_2010" class="layer"><p>2010</p></div>
+          <div data-layer="layer_diff" class="layer"><p>Urban sprawl (93 - 10)</p></div>
+        </div>
+      </div>
+      <div>
+        <h2>Socio-demographic groups</h2>
+        <div id="layers-2" class="layers">
+          <div data-layer="layer_ethnic" class="layer">
+            <div>
+              <h3>Ethnicity</h3>
+              <p><span id='white'>●</span>White</p>
+              <p><span id='black'>●</span>Black</p>
+              <p><span id='latino'>●</span>Latino</p>
+              <p><span id='asian'>●</span>Asian</p>
+              <p><span id='other'>●</span>Other</p>
+            </div>
+          </div>
+          <div data-layer="layer_house" class="layer">
+            <div>
+              <h3>Householder</h3>
+              <p><span id='owner'>●</span>Owner</p>
+              <p><span id='renter'>●</span>Renter</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>Each ● corresponds to 20 people.</p>
+      <p><em>Source : 2010, USA Census tract data.</em></p>
+    </div>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
